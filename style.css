@@ -64,6 +64,17 @@ button:hover {
   background-color: #ff4d4d;
 }
 
+.tag {
+  color: rgb(20, 191, 20);
+}
+
 body {
-  background: linear-gradient(to bottom, #00ccff, #99ccff);
+  background: linear-gradient(to bottom, #1a1a1a, #99ccff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
 }
