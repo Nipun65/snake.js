@@ -6,6 +6,10 @@ let context = canvas.getContext("2d");
 let snake = [{ x: 200, y: 200 }];
 let food = {};
 let direction = "right";
+let canvasSize = {
+  height: 400,
+  width: 400,
+};
 
 // generate a random position for the food
 let score = 0;
@@ -40,7 +44,12 @@ function moveSnake() {
   }
 
   // check if the snake hits the wall or itself
-  if (head.x < 0 || head.x >= 400 || head.y < 0 || head.y >= 400) {
+  if (
+    head.x < 0 ||
+    head.x >= canvasSize.width ||
+    head.y < 0 ||
+    head.y >= canvasSize.height
+  ) {
     alert("Game Over");
     return;
   }
@@ -64,7 +73,7 @@ function moveSnake() {
   snake.unshift(head);
 
   // draw the game
-  context.clearRect(0, 0, 400, 400);
+  context.clearRect(0, 0, canvasSize.height, canvasSize.width);
 
   context.fillStyle = "green";
   for (let i = 0; i < snake.length; i++) {
@@ -78,17 +87,43 @@ function moveSnake() {
   setTimeout(moveSnake, speed);
 }
 
-// listen for arrow key presses to change the direction of the snake
-document.addEventListener("keydown", function (event) {
-  if (event.key === "ArrowRight" && direction !== "left") {
+const handleMovement = (event, value = undefined) => {
+  if (
+    (event?.key === "ArrowRight" || value === "ArrowRight") &&
+    direction !== "left"
+  ) {
     direction = "right";
-  } else if (event.key === "ArrowLeft" && direction !== "right") {
+  } else if (
+    (event?.key === "ArrowLeft" || value === "ArrowLeft") &&
+    direction !== "right"
+  ) {
     direction = "left";
-  } else if (event.key === "ArrowUp" && direction !== "down") {
+  } else if (
+    (event?.key === "ArrowUp" || value === "ArrowUp") &&
+    direction !== "down"
+  ) {
     direction = "up";
-  } else if (event.key === "ArrowDown" && direction !== "up") {
+  } else if (
+    (event?.key === "ArrowDown" || value === "ArrowDown") &&
+    direction !== "up"
+  ) {
     direction = "down";
   }
+};
+
+const controllers = document.querySelectorAll(".controllers");
+
+controllers.forEach((controller) => {
+  controller.addEventListener("click", function (event) {
+    if (event.target.localName === "img") {
+      handleMovement(undefined, event.target.parentNode.ariaLabel);
+    } else handleMovement(undefined, event.target.ariaLabel);
+  });
+});
+
+// listen for arrow key presses to change the direction of the snake
+document.addEventListener("keydown", function (event) {
+  handleMovement(event);
 });
 
 function adjustSpeed() {

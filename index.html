@@ -4,9 +4,25 @@
     <title>Snake Game</title>
   </head>
   <body>
-    <h1 class="tag">Opheodrys.io</h1>
-    <canvas id="game-canvas" width="400" height="400"></canvas>
+    <h1 class="tag">Opheodrys</h1>
     <p id="score">Score: 0</p>
+    <canvas id="game-canvas" width="400" height="400"></canvas>
+    <div class="buttons">
+      <button class="controllers" aria-label="ArrowUp">
+        <img src="./assets/button.svg" />
+      </button>
+      <div>
+        <button class="controllers" aria-label="ArrowLeft">
+          <img src="./assets/button.svg" />
+        </button>
+        <button class="controllers" aria-label="ArrowRight">
+          <img src="./assets/button.svg" />
+        </button>
+      </div>
+      <button class="controllers" aria-label="ArrowDown">
+        <img src="./assets/button.svg" />
+      </button>
+    </div>
     <link rel="stylesheet" href="style.css" />
     <script src="snake.js"></script>
   </body>
