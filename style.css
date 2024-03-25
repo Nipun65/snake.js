@@ -61,7 +61,7 @@ canvas {
 
 .buttons > div > :nth-child(1) {
   transform: rotate(180deg);
-  margin-bottom: 0.15rem;
+  margin-bottom: -0.15rem;
 }
 
 .buttons > :nth-child(3) {
@@ -91,7 +91,7 @@ canvas {
   width: 40px;
 }
 
-@media (width<=768px) {
+@media (max-width: 768px) {
   canvas {
     height: 300px;
     width: 300px;
