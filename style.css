@@ -61,7 +61,7 @@ canvas {
 
 .buttons > div > :nth-child(1) {
   transform: rotate(180deg);
-  margin-bottom: -0.15rem;
+  margin-top: -0.25rem;
 }
 
 .buttons > :nth-child(3) {
